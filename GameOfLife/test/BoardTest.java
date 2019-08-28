@@ -57,15 +57,18 @@ public class BoardTest {
     @Test
     public void twoCellsNextToEachOtherShouldBeNeighbors(){
         Board board = new Board ();
-        board.addCell(new Cell(0,0));
-        board.addCell(new Cell(0,1));
+        Cell first = new Cell(0,0);
+        Cell second = new Cell(0,1);
+
+        board.addCell(first);
+        board.addCell(second);
 
         
-        List<Cell> neighborsOfFirsCell = board.getNeighbors(new Cell (0,0));
-        List<Cell> neighborsOfSecondCell = board.getNeighbors(new Cell (0,1));
+        List<Cell> neighborsOfFirsCell = board.getNeighbors(first);
+        List<Cell> neighborsOfSecondCell = board.getNeighbors(second);
         
-        assertArrayEquals(new Cell[]{new Cell(0,1)}, neighborsOfFirsCell.toArray());
-        assertArrayEquals(new Cell[]{new Cell(0,0)}, neighborsOfSecondCell.toArray());
+        assertArrayEquals(new Cell[]{second}, neighborsOfFirsCell.toArray());
+        assertArrayEquals(new Cell[]{first}, neighborsOfSecondCell.toArray());
 
 
     }
