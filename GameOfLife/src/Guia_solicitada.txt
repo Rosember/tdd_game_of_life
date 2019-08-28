@@ -7,3 +7,6 @@ dos células una al lado de la otra deben estar cerca de la otra
 una sola célula lejos la una de la otra debería tener cero vecinos
 4. Prueba 
 Celda del medio de un bloque de 3x3 debería tener ocho vecinos.
+
+5. prueba del juego
+una sola célula debe morir en la próxima iteración

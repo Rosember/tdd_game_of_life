@@ -18,6 +18,11 @@ import java.util.Set;
  */
 public class Board {
 
+    public Board() {
+    }
+
+    
+    
     private Set<Cell> cells = new HashSet<>();
 
     public void addCell(Cell cell) {
@@ -58,7 +63,7 @@ public class Board {
         return neighborhood;
     }
 
-    private boolean isAlive(Cell c) {
+    public boolean isAlive(Cell c) {
         return cells.contains(c);
     }
 }

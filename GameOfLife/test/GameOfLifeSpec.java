@@ -3,19 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gameoflife;
+
+import static com.sun.org.apache.regexp.internal.RETest.test;
+import gameoflife.Board;
+import gameoflife.Cell;
+import gameoflife.Game;
+import static jdk.nashorn.internal.objects.NativeRegExp.test;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author rcarrasco
  */
-public class GameOfLife {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+public class GameOfLifeSpec {
+    
+    public GameOfLifeSpec() {
+    }
+    
+    @Test
+    public void aSingleCellShouldDieInNextIteration(){
         
         //given
         Board board = new Board();
@@ -26,11 +33,8 @@ public class GameOfLife {
         Board nextBoard = game.nextIteration();
         //then
         
-        if (nextBoard.isAlive(new Cell(0, 0))) {
-            System.out.println("ok");
-        }else{
-            System.out.println("no");
-        }
+        assertFalse(nextBoard.isAlive(new Cell(0, 0)));
     }
     
+  
 }
