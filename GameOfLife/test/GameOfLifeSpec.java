@@ -55,5 +55,38 @@ public class GameOfLifeSpec {
         assertTrue(nextBoard.isAlive(new Cell(1, 1)));
     }
     
+    @Test
+    public void cellWithThreeNeighborsShouldLiveInNextIteration() {
 
+        //given
+        Board board = new Board();
+        board.addCell(new Cell(0, 1));
+        board.addCell(new Cell(1, 1));
+        board.addCell(new Cell(1, 0));
+        board.addCell(new Cell(0, 0));
+
+        Game game = new Game(board);
+
+        //when
+        Board nextBoard = game.nextIteration();
+        //then
+
+        assertTrue(nextBoard.isAlive(new Cell(1, 1)));
+    }
+    
+    
+    @Test
+    public void cellWithMoreThreeNeighborsShouldDieInNextIteration() {
+
+        //given
+        Board board =  BoardTest.createBlockBoard(3, 3);
+        Game game = new Game(board);
+
+        //when
+        Board nextBoard = game.nextIteration();
+        //then
+
+        assertFalse(nextBoard.isAlive(new Cell(1, 1)));
+    }
+    
 }

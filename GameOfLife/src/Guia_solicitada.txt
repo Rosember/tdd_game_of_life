@@ -15,3 +15,6 @@ una sola célula debe morir en la próxima iteración
 
 6. prueba 
 con dos vecinos debería vivir en la siguiente iteración.
+
+7. prueba
+con más de tres vecinos deberían morir en la próxima iteración.

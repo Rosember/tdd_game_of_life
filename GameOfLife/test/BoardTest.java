@@ -90,7 +90,7 @@ public class BoardTest {
         assertEquals(8, neighbors.size());
     }
 
-    private Board createBlockBoard(int w, int h) {
+    public static Board createBlockBoard(int w, int h) {
         Board board = new Board();
         for (int i = 0; i < w; i++) {
             for (int j = 0; j < h; j++) {
