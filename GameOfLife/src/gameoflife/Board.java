@@ -5,6 +5,8 @@
  */
 package gameoflife;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,6 +20,6 @@ public class Board {
     }
 
     public List<Cell> getNeighbors(Cell cell) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Collections.emptyList();
     }
 }
