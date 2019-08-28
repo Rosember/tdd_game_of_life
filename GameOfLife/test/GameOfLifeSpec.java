@@ -89,4 +89,22 @@ public class GameOfLifeSpec {
         assertFalse(nextBoard.isAlive(new Cell(1, 1)));
     }
     
+    @Test
+    public void aDeadCellWithThreeNeighborsShouldBeRebornInNextIteration() {
+
+        //given
+        Board board = new Board();
+        board.addCell(new Cell(0, 1));
+        board.addCell(new Cell(1, 1));
+        board.addCell(new Cell(1, 0));
+        
+        Game game = new Game(board);
+
+        //when
+        Board nextBoard = game.nextIteration();
+        //then
+
+        assertTrue(nextBoard.isAlive(new Cell(0, 0)));
+    }
+    
 }

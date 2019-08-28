@@ -67,8 +67,16 @@ public class Board {
 
     public Board nextIteration() {
         Board board = new Board();
+        Set<Cell> potentialCellsToBeReborn = new HashSet<>();
         for (Cell c : cells) {
             if (shouldBeAliveInNextIteration(c)) {
+                board.addCell(c);
+            }
+            potentialCellsToBeReborn.addAll(getNeighborhood(c));
+        }
+        
+        for (Cell c : potentialCellsToBeReborn) {
+            if (shouldBeReborn(c)) {
                 board.addCell(c);
             }
         }
@@ -77,5 +85,9 @@ public class Board {
 
     private boolean shouldBeAliveInNextIteration(Cell c) {
         return (getNeighbors(c).size() == 2 || getNeighbors(c).size() == 3);
+    }
+
+    private boolean shouldBeReborn(Cell c) {
+        return !isAlive(c)&& getNeighbors(c).size()==3;
     }
 }
