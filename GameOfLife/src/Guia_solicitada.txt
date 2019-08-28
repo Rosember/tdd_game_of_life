@@ -3,3 +3,5 @@
 Una sola célula debería tener cero vecinos
 2. prueba
 dos células una al lado de la otra deben estar cerca de la otra
+3. Prueba
+una sola célula lejos la una de la otra debería tener cero vecinos
