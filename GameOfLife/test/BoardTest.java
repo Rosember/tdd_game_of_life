@@ -7,6 +7,7 @@
 import gameoflife.Board;
 import gameoflife.Cell;
 import java.util.List;
+import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -48,7 +49,7 @@ public class BoardTest {
         Board board = new Board();
         board.addCell(new Cell(0, 0));
 
-        List<Cell> neighbors = board.getNeighbors(new Cell(0, 0));
+        Set<Cell> neighbors = board.getNeighbors(new Cell(0, 0));
 
         assertEquals(0, neighbors.size());
     }
@@ -62,8 +63,8 @@ public class BoardTest {
         board.addCell(first);
         board.addCell(second);
 
-        List<Cell> neighborsOfFirsCell = board.getNeighbors(first);
-        List<Cell> neighborsOfSecondCell = board.getNeighbors(second);
+        Set<Cell> neighborsOfFirsCell = board.getNeighbors(first);
+        Set<Cell> neighborsOfSecondCell = board.getNeighbors(second);
 
         assertArrayEquals(new Cell[]{second}, neighborsOfFirsCell.toArray());
         assertArrayEquals(new Cell[]{first}, neighborsOfSecondCell.toArray());
@@ -75,7 +76,7 @@ public class BoardTest {
         board.addCell(new Cell(0, 0));
         board.addCell(new Cell(0, 100));
 
-        List<Cell> neighbors = board.getNeighbors(new Cell(0, 0));
+        Set<Cell> neighbors = board.getNeighbors(new Cell(0, 0));
 
         assertEquals(0, neighbors.size());
     }
@@ -84,7 +85,7 @@ public class BoardTest {
     public void middleCellOf3x3BlockShouldHAveEighNeighbors() {
         Board board = createBlockBoard(3,3);
 
-        List<Cell> neighbors = board.getNeighbors(new Cell(1, 1));
+        Set<Cell> neighbors = board.getNeighbors(new Cell(1, 1));
 
         assertEquals(8, neighbors.size());
     }

@@ -23,20 +23,39 @@ public class Board {
     public void addCell(Cell cell) {
         cells.add(cell);
     }
+    
+    public Set<Cell> getNeighbors (Cell cell){
+        //if (isAlive(c) && !c.equals(cell)) {
+        Set<Cell>neighborhood = getNeighborhood(cell);
+        Set<Cell>neighbors = new HashSet<>();
+        
+        for (Cell c : neighborhood) {
+            if (isAlive(c)) {
+                neighbors.add(c);
+            }
+        }
+        neighbors.remove(cell);
+        return neighbors;
+    }
 
-    public List<Cell> getNeighbors(Cell cell) {
-        List<Cell> neighbors = new ArrayList<>();
+    /***
+     * Vecindario
+     * @param cell
+     * @return 
+     */
+    private Set<Cell> getNeighborhood(Cell cell) {
+        Set<Cell> neighborhood = new HashSet<>();
 
         for (int dx = -1; dx <= 1; dx++) {
             for (int dy = -1; dy <= 1; dy++) {
                 Cell c = new Cell(cell.row + dx, cell.column + dy);
-                if (isAlive(c) && !c.equals(cell)) {
-                    neighbors.add(c);
-                }
+                
+                    neighborhood.add(c);
+                
             }
         }
 
-        return neighbors;
+        return neighborhood;
     }
 
     private boolean isAlive(Cell c) {
