@@ -11,16 +11,16 @@ package gameoflife;
  */
 public class Game {
 
-    public Game() {
-    }
-
-
+private Board board ;
     
     public Game(Board board) {
+        this.board = board;
     }
 
     public Board nextIteration() {
-
-        return new Board();
+        Board nextBoard = board.nextIteration();
+        board = nextBoard;
+        
+        return board;
     }
 }

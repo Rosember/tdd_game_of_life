@@ -17,24 +17,43 @@ import static org.junit.Assert.*;
  * @author rcarrasco
  */
 public class GameOfLifeSpec {
-    
+
     public GameOfLifeSpec() {
     }
-    
+
     @Test
-    public void aSingleCellShouldDieInNextIteration(){
-        
+    public void aSingleCellShouldDieInNextIteration() {
+
         //given
         Board board = new Board();
         board.addCell(new Cell(0, 0));
         Game game = new Game(board);
-        
+
         //when
         Board nextBoard = game.nextIteration();
         //then
-        
+
         assertFalse(nextBoard.isAlive(new Cell(0, 0)));
     }
+
+    @Test
+    public void cellWithTwoNeighborsShouldLiveInNextIteration() {
+
+        //given
+        Board board = new Board();
+        board.addCell(new Cell(0, 0));
+        board.addCell(new Cell(1, 1));
+        board.addCell(new Cell(1, 0));
+        board.addCell(new Cell(0, 1));
+
+        Game game = new Game(board);
+
+        //when
+        Board nextBoard = game.nextIteration();
+        //then
+
+        assertTrue(nextBoard.isAlive(new Cell(1, 1)));
+    }
     
-  
+
 }

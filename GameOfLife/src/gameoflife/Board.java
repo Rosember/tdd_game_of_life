@@ -21,19 +21,17 @@ public class Board {
     public Board() {
     }
 
-    
-    
     private Set<Cell> cells = new HashSet<>();
 
     public void addCell(Cell cell) {
         cells.add(cell);
     }
-    
-    public Set<Cell> getNeighbors (Cell cell){
+
+    public Set<Cell> getNeighbors(Cell cell) {
         //if (isAlive(c) && !c.equals(cell)) {
-        Set<Cell>neighborhood = getNeighborhood(cell);
-        Set<Cell>neighbors = new HashSet<>();
-        
+        Set<Cell> neighborhood = getNeighborhood(cell);
+        Set<Cell> neighbors = new HashSet<>();
+
         for (Cell c : neighborhood) {
             if (isAlive(c)) {
                 neighbors.add(c);
@@ -43,10 +41,12 @@ public class Board {
         return neighbors;
     }
 
-    /***
+    /**
+     * *
      * Vecindario
+     *
      * @param cell
-     * @return 
+     * @return
      */
     private Set<Cell> getNeighborhood(Cell cell) {
         Set<Cell> neighborhood = new HashSet<>();
@@ -54,9 +54,7 @@ public class Board {
         for (int dx = -1; dx <= 1; dx++) {
             for (int dy = -1; dy <= 1; dy++) {
                 Cell c = new Cell(cell.row + dx, cell.column + dy);
-                
-                    neighborhood.add(c);
-                
+                neighborhood.add(c);
             }
         }
 
@@ -65,5 +63,19 @@ public class Board {
 
     public boolean isAlive(Cell c) {
         return cells.contains(c);
+    }
+
+    public Board nextIteration() {
+        Board board = new Board();
+        for (Cell c : cells) {
+            if (shouldBeAliveInNextIteration(c)) {
+                board.addCell(c);
+            }
+        }
+        return board;
+    }
+
+    private boolean shouldBeAliveInNextIteration(Cell c) {
+        return (getNeighbors(c).size() == 2 || getNeighbors(c).size() == 3);
     }
 }
