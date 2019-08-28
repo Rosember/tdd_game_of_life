@@ -80,6 +80,23 @@ public class BoardTest {
         assertEquals(0, neighbors.size());
     }
     
-    
+    @Test
+    public void middleCellOf3x3BlockShouldHAveEighNeighbors() {
+        Board board = createBlockBoard(3,3);
+
+        List<Cell> neighbors = board.getNeighbors(new Cell(1, 1));
+
+        assertEquals(8, neighbors.size());
+    }
+
+    private Board createBlockBoard(int w, int h) {
+        Board board = new Board();
+        for (int i = 0; i < w; i++) {
+            for (int j = 0; j < h; j++) {
+                board.addCell(new Cell(i, j));
+            }
+        }
+        return board;
+    }
 
 }

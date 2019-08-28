@@ -17,33 +17,29 @@ import java.util.Set;
  * @author rcarrasco
  */
 public class Board {
-    
-    private Set<Cell> cells = new HashSet<>(); 
-    
-    public void addCell (Cell cell){
+
+    private Set<Cell> cells = new HashSet<>();
+
+    public void addCell(Cell cell) {
         cells.add(cell);
     }
 
     public List<Cell> getNeighbors(Cell cell) {
-        List<Cell>neighbors = new ArrayList<>();
-        
-        for (int dy = -1; dy <= 1; dy++) {
-            Cell c = new Cell (cell.row,cell.column+dy);
-            if (isAlive(c) && !c.equals(cell)) {
-                neighbors.add(c);
+        List<Cell> neighbors = new ArrayList<>();
+
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = -1; dy <= 1; dy++) {
+                Cell c = new Cell(cell.row + dx, cell.column + dy);
+                if (isAlive(c) && !c.equals(cell)) {
+                    neighbors.add(c);
+                }
             }
         }
-        /*
-        for (Cell c : cells) {
-            if (!c.equals(cell)) {
-                neighbors.add(c);
-            }
-        }
-*/
+
         return neighbors;
     }
-    
-    private boolean isAlive (Cell c){
+
+    private boolean isAlive(Cell c) {
         return cells.contains(c);
     }
 }

@@ -5,3 +5,5 @@ Una sola célula debería tener cero vecinos
 dos células una al lado de la otra deben estar cerca de la otra
 3. Prueba
 una sola célula lejos la una de la otra debería tener cero vecinos
+4. Prueba 
+Celda del medio de un bloque de 3x3 debería tener ocho vecinos.
